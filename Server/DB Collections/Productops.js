@@ -1,5 +1,8 @@
+// Importing Model
 const { Products } = require("../Models/Products");
 
+
+// Get All Products
 const getproducts = async (res) => {
     try {
         const result = await Products.find();
@@ -10,11 +13,16 @@ const getproducts = async (res) => {
     }
 }
 
+
+// Get Single Product by Id
 const getproduct = async (req, res) => {
+
     try {
-        const _id = req.params.id;
-        const result = await Products.findById({ _id });
+
+        const _id = req.params.id; // Product Id
+        const result = await Products.findById({ _id }); // Find Product By Id in Datbase
         res.status(200).send(result);
+
     }
     catch (err) {
         console.log(err);
@@ -22,8 +30,13 @@ const getproduct = async (req, res) => {
     }
 }
 
+
+// Creating New Product
 const createproduct = async (req, res) => {
+
     try {
+
+        // Creating New Products Object
         var product = new Products({
             Name: req.body.Name,
             Price: req.body.Price,
@@ -36,16 +49,15 @@ const createproduct = async (req, res) => {
             Graphics_Processor: req.body.Graphics_Processor,
             image: req.body.image
         });
+
+        // Saving The Created object in database
         const result = await product.save();
-        res.status(201).send(result);
+        res.status(200).send(result);
     }
     catch (err) {
+
         console.log(err);
         res.status(400).send(err);
     }
 }
-module.exports = {
-    getproducts,
-    getproduct,
-    createproduct
-}
+module.exports = { getproducts, getproduct, createproduct }
