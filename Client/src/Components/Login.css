@@ -1,0 +1,36 @@
+.lf{
+    margin-top: 170px;
+    border-radius: 35px;
+    border: 2px solid;
+    width: 40%;
+    margin-left: auto;  
+    margin-right: auto; 
+    color: #1266F1;
+    height: 290px;
+}
+.lo{
+    margin-left: 100px;
+    display: inline-block;
+}
+.li{
+    width: 200px !important;
+    margin-left: 42px;
+    border-radius: 20px !important;
+}
+.ll{
+    font-size: 17px !important;
+}
+.lh{
+    padding-top: 15px;
+    font-weight: bold;
+    margin-left: 220px;
+}
+
+.la{
+    margin-left:35px;
+    margin-top: 5px;
+}
+
+.ld{
+    text-align: center;
+}

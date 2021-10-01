@@ -1,0 +1,45 @@
+.dp{
+    margin-left: 15px;
+    font-size: 18px;
+}
+.df{
+    margin-top: 30px;
+    border-radius: 35px;
+    border: 2px  solid;
+    width: 60%;
+    margin-left: auto;  
+    margin-right: auto; 
+    color: black;
+    height: 700px;
+}
+.dfo{
+    margin-left: 50px;
+    display: inline-block;
+    margin-top: 70px;
+}
+.dl{
+    font-size: 18px;
+    font-weight: bold;
+    width: 450px !important;
+    text-align: center;
+}
+.db{
+    margin-top: 10px !important;
+    margin-left: 20px !important;
+}
+.b1{
+    margin-top: 2px;
+   width: 130px;
+}
+.dh{
+    text-align: center; 
+    padding-top: 15px;
+    font-weight: bold;
+}
+.dn{
+    font-weight:bold;
+    margin-left: 50px !important;
+}
+.di{
+    margin-top: 150px !important;
+}

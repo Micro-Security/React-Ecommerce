@@ -1,0 +1,36 @@
+.re{
+    margin-top: 50px;
+    border-radius: 35px;
+    border: 2px solid ;
+    width: 45%;
+    margin-left: auto;  
+    margin-right: auto; 
+    color: #1266F1;
+    height: 590px;
+}
+.ro{
+    margin-left: 130px;
+    display: inline-block;
+}
+.rd{
+    text-align: center;
+}
+.rn{
+    padding-top: 15px;
+    font-weight: bold;
+    margin-left: 206px;
+    width: 170px !important;
+}
+.rl{
+    font-size: 17px !important;
+}
+
+.ra{
+    margin-left:50px;
+    margin-top: 5px;
+}
+.ri{
+    width: 200px !important;
+    margin-left: 42px;
+    border-radius: 20px !important;
+}

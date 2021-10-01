@@ -1,0 +1,34 @@
+.up{
+    margin-left: 50px;
+    font-size: 18px;
+    margin-top: 1px;
+}
+.uf{
+    margin-left: 130px !important;
+}
+.uo{
+    margin-top: 30px;
+    border-radius: 35px;
+    border: 2px  solid;
+    width: 50%;
+    margin-left: auto;  
+    margin-right: auto; 
+    color: #1266F1;
+    height: 520px;
+    text-align: center;
+}
+.ul{
+    font-size: 20px;
+    font-weight: bold; 
+    width: 30% !important;
+}
+.ub{
+    text-align: center;
+    margin-top: 4px;
+}
+.uh{
+    text-align: center; 
+    padding-top: 15px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
