@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Cart.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Cart() {
     const [cdata, setcdata] = useState([]);
@@ -18,7 +18,7 @@ function Cart() {
             const data = await res.json();
             setcdata(data.items);
             settdata(data);
-    
+
 
             if (!res.status === 200) {
                 const error = new Error(res.error);
@@ -32,18 +32,22 @@ function Cart() {
 
     const del = async () => {
         try {
-            const uemail = localStorage.getItem("email");
-            const res = await fetch("http://localhost:5000/Cart/" + uemail, {
-                method: "DELETE",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-            });
-            const data = await res.json();
-            if (!res.status === 200) {
-                const error = new Error(res.error);
-                throw error;
+            if (tdata.totalPrice) {
+                const uemail = localStorage.getItem("email");
+                const res = await fetch("http://localhost:5000/Cart/" + uemail, {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                });
+                await res.json();
+                if (!res.status === 200) {
+                    const error = new Error(res.error);
+                    throw error;
+                }
+            } else {
+                alert("Sorry! But You Need to first add Items in the carts before you buy them")
             }
         }
         catch (err) {
@@ -64,23 +68,23 @@ function Cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    {cdata.map(a => {
+                    {cdata ? cdata.map(a => {
                         return (
                             <tr key={a._id}>
                                 <td>{a.productName}</td>
                                 <td>{a.price}</td>
                             </tr>
                         );
-                    })}
+                    }) : ""}
                 </tbody>
             </table>
             <div className="cd row ">
-                <h3 className="col-2 ch text-primary" >Total Price:</h3>
-                <p className="col-2 cp text-primary" >₹{tdata.totalPrice}</p>
+                <h3 className="col-2 ch text-primary">Total Price:</h3>
+                <p className="col-2 cp text-primary" >₹{tdata.totalPrice ? tdata.totalPrice : 0}</p>
             </div>
 
             <div className="text-center mt-3">
-                <Link className="btn btn-outline-primary rounded-pill" to="Purchase" onClick={del} >Buy Now</Link>
+                <Link className="btn btn-outline-primary rounded-pill" to={tdata.totalPrice ? "Purchase" : "/Cart"} onClick={del} >Buy Now</Link>
             </div>
         </div>
     );
