@@ -10,13 +10,13 @@ const getproducts = async (res) => {
     }
 }
 
-const getproduct=async (req,res)=>{
-    try{
-        const _id=req.params.id;
-        const result=await Products.findById({_id});
+const getproduct = async (req, res) => {
+    try {
+        const _id = req.params.id;
+        const result = await Products.findById({ _id });
         res.status(200).send(result);
     }
-    catch(err){
+    catch (err) {
         console.log(err);
         res.status(500).send(err);
     }
@@ -25,15 +25,16 @@ const getproduct=async (req,res)=>{
 const createproduct = async (req, res) => {
     try {
         var product = new Products({
-        Name:req.body.Name,
-        Price:req.body.Price,
-        OS: req.body.OS,
-        Display: req.body.Display,
-        Processor: req.body.Processor,
-        Memory: req.body.Memory,
-        Weight: req.body.Weight,
-        Dimension: req.body.Dimension,
-        Graphics_Processor: req.body.Graphics_Processor,
+            Name: req.body.Name,
+            Price: req.body.Price,
+            OS: req.body.OS,
+            Display: req.body.Display,
+            Processor: req.body.Processor,
+            Memory: req.body.Memory,
+            Weight: req.body.Weight,
+            Dimension: req.body.Dimension,
+            Graphics_Processor: req.body.Graphics_Processor,
+            image: req.body.image
         });
         const result = await product.save();
         res.status(201).send(result);
@@ -43,7 +44,7 @@ const createproduct = async (req, res) => {
         res.status(400).send(err);
     }
 }
-module.exports={
+module.exports = {
     getproducts,
     getproduct,
     createproduct
