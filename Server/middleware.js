@@ -1,33 +1,43 @@
+/ Importing Functions
+const jwt = require("jsonwebtoken");
+require("dotenv").config({ path: "./config.env" }); // Configuring Environment Variables 
+
+// Importing Model
 const { User } = require("./Models/User");
-const jwt=require("jsonwebtoken");
-const dotenv=require("dotenv");
 
-dotenv.config({path:"./config.env"});
+// Authenticate User
+const authenticate = async (req, res, next) => {
 
-const authenticate=async (req,res,next)=>{
-    try{
-        const token=req.cookies.jwtoken;
-        console.log(token);
-        const verifytoken=jwt.verify(token,process.env.SECRET_KEY);
-        const rootUser=await User.findOne({_id:verifytoken._id,"tokens.token":token});
+    try {
 
-        if(!rootUser){
+        // Fetching Auth-Token
+        const token = req.cookies.jwtoken;
+
+        // Extracting Data From Token
+        const verifytoken = jwt.verify(token, process.env.SECRET_KEY);
+
+        // Finding Other Information Of The User from Database
+        const rootUser = await User.findOne({ _id: verifytoken._id, "tokens.token": token });
+
+        // If There is no user found
+        if (!rootUser) {
             throw new Error('User not Found')
         }
 
-        req.token=token;
-        req.rootUser=rootUser;
-        req.userID=rootUser._id;
+        // Setting variables to used next
+        req.token = token;
+        req.rootUser = rootUser;
+        req.userID = rootUser._id;
 
+        // Run Next Function
         next();
     }
-    catch(err){
-       res.status(401).send('Unauthorized:No token provided');
-       console.log(err);
+    catch (err) {
+
+        res.status(401).send('Unauthorized:No token provided');
+        console.log(err);
     }
 }
 
 
-module.exports={
-    authenticate
-};
+module.exports = authenticate;

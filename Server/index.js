@@ -1,13 +1,14 @@
+// Importing Functions
 const express = require("express");
-const runDB = require("./db");
-const router = require("./Controller");
 const cookieParser = require('cookie-parser');
+const router = require("./Controller");
+const runDB = require("./db");
 
+// Initialising Functions
 var app = express();
-runDB();
+runDB(); // Starting Mongo Database
 
 const port = process.env.PORT || 5000;
-
 
 var allowCrossDomain = function (req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -16,12 +17,17 @@ var allowCrossDomain = function (req, res, next) {
     next();
 }
 
+// Allow Other Domain user to access the data through API
 app.use(allowCrossDomain);
 
+// Accept Json Data From Requests
 app.use(express.json());
 
+// Used To Parse HTTP header cookie
 app.use(cookieParser());
 
+// Creating End-points
 app.use(router);
 
+// Starting Node Server
 app.listen(port, () => console.log(`Listening at ${port}`));

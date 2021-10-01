@@ -1,10 +1,10 @@
+// Importing Functions
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+require("dotenv").config({ path: "./config.env" }); // Configuring Environment Variables 
 
-dotenv.config({ path: "./config.env" });
 
 async function startDatabase() {
-    const url = process.env.DATABASE;
+    const url = process.env.DATABASE; // Database Connection URL
     await mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
     console.log("Database is Connected!!");
 }
