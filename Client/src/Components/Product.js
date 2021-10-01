@@ -51,7 +51,7 @@ function Product() {
 
     useEffect(() => {
         about();
-    }, []);
+    });
     return (
         <div className="container">
             <div className="row">
